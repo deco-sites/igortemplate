@@ -3,12 +3,12 @@ export interface Props {
   description: string;
 }
 
-export default function Coupon({couponCode, description}: Props) {
+export default function Coupon({ couponCode, description }: Props) {
   return (
-    <section className="w-100 flex">
-      <div className="flex flex-col items-start justify-center">
-        <p className="text-zinc-400 bold">{couponCode}</p>
-        <p className="text-zinc-400">{description}</p>
+    <section className="w-full flex">
+      <div className="w-full flex flex-col items-center justify-center">
+      <p className="text-black">{description}</p>
+        <p className="text-black font-bold">Coupon code: <span className="text-red-800 underline">{couponCode}</span></p>
       </div>
     </section>
   );
