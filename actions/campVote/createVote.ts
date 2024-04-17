@@ -1,4 +1,4 @@
-import {AppContext} from 'deco-sites/igortemplate/apps/site.ts';
+import { AppContext } from "deco-sites/igortemplate/apps/site.ts";
 
 export interface Props {
   productId: number;
@@ -17,10 +17,10 @@ export default async function createCampVote(
   const bodyData = {
     ...props,
   };
-  const response = await fetch('https://camp-api.deco.cx/event', {
-    method: 'POST',
+  const response = await fetch("https://camp-api.deco.cx/event", {
+    method: "POST",
     headers: {
-      'x-api-key': ctx.secretCampApi.get(),
+      "x-api-key": ctx.secretCampApi.get(),
     } as Record<string, string>,
     body: JSON.stringify(bodyData),
   });

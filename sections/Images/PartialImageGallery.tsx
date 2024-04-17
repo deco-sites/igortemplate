@@ -1,12 +1,12 @@
-import {ImageWidget} from 'apps/admin/widgets.ts';
-import {AppContext} from 'deco-sites/igortemplate/apps/site.ts';
-import {signal} from '@preact/signals';
-import {usePartialSection} from 'deco/hooks/usePartialSection.ts';
+import { ImageWidget } from "apps/admin/widgets.ts";
+import { AppContext } from "deco-sites/igortemplate/apps/site.ts";
+import { signal } from "@preact/signals";
+import { usePartialSection } from "deco/hooks/usePartialSection.ts";
 
 export interface Props {
   images: ImageWidget[];
   page: number;
-  title: string
+  title: string;
 }
 
 export function ErrorFallback() {
@@ -40,14 +40,15 @@ export default function PartialImageGallery(props: Props) {
 
   return (
     <div className="flex flex-col items-center justify-between gap-4">
-      <h2 className="text-black text-lg text-center w-full underline">{props.title}</h2>
+      <h2 className="text-black text-lg text-center w-full underline">
+        {props.title}
+      </h2>
       <div className="flex flex-wrap items-start justify-start gap-2">
         {limitedImages.value.map((image, i) => (
           <img src={image} alt={`image-${i}`} width={200} height={200} />
         ))}
       </div>
 
-    total: numbe
       {images.value.length > 3 && (
         <button
           className="text-white bg-blue-600 rounded px-2 py-2"
@@ -55,7 +56,8 @@ export default function PartialImageGallery(props: Props) {
             props: {
               page: props.page + 1,
             },
-          })}>
+          })}
+        >
           Fetch More
         </button>
       )}

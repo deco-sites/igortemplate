@@ -1,4 +1,4 @@
-import {AppContext} from 'deco-sites/igortemplate/apps/site.ts';
+import { AppContext } from "deco-sites/igortemplate/apps/site.ts";
 
 export interface Props {
   productId: number;
@@ -17,7 +17,7 @@ export default async function getVotes(
     `https://camp-api.deco.cx/event/${props.productId}`,
     {
       headers: {
-        'x-api-key': ctx.secretCampApi.get(),
+        "x-api-key": ctx.secretCampApi.get(),
       } as Record<string, string>,
     },
   );
