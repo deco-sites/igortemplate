@@ -1,6 +1,13 @@
 import { ProductDetailsPage } from "apps/commerce/types.ts";
+import type { ImageWidget } from "apps/admin/widgets.ts";
+import Spinner from "deco-sites/igortemplate/components/ui/Spinner.tsx";
 
 export interface Props {
+  error: {
+    fallbackImage: ImageWidget
+    title: string
+    description: string
+  }
   product: ProductDetailsPage | null;
 }
 
@@ -23,6 +30,24 @@ function getProductProps(productDetails: ProductDetailsPage) {
     name: product?.name,
     offers: product?.offers,
   };
+}
+
+export function ErrorFallback(props: Props) {
+    return (
+        <div className="flex items-center lg:items-start justify-start">
+            <img src={props.error.fallbackImage} width={200} height={200} alt={props.error.title} />
+            <span>{props.error.title}</span>
+            <span>{props.error.description}</span>
+
+            <a href="/culture" title="Learn more" className="underline text-blue-500 font-thin text-sm">To learn more about us!</a>
+        </div>
+    )
+}
+
+export function LoadingFallback() {
+    return (
+        <Spinner size={24} />
+    )
 }
 
 export default function HorizontalProductCard(props: Props) {
