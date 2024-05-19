@@ -1,6 +1,7 @@
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Spinner from "deco-sites/igortemplate/components/ui/Spinner.tsx";
+import ProductVote from "deco-sites/igortemplate/islands/Votes/ProductVote.tsx";
 
 export interface Props {
   error: {
@@ -9,6 +10,16 @@ export interface Props {
     description: string;
   };
   product: ProductDetailsPage | null;
+  maxWidth?:
+    | "max-w-xl"
+    | "max-w-2xl"
+    | "max-w-3xl"
+    | "max-w-4xl"
+    | "max-w-5xl"
+    | "max-w-6xl"
+    | "max-w-7xl"
+    | "max-w-full";
+  animateImage?: boolean;
 }
 
 function formatCurrency(price: number | undefined) {
@@ -69,26 +80,44 @@ export default function HorizontalProductCard(props: Props) {
   );
 
   const priceIsDiferent = offers?.lowPrice !== offers?.highPrice;
+  const componentClass =
+    "h-full flex flex-row items-start justify-center border-black rounded border px-2 py-2 bg-gray-800 gap-4 w-full " +
+    props?.maxWidth;
 
   return (
-    <div className="w-full h-auto flex items-center justify-center my-2">
-      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center border-black rounded border px-2 py-2 bg-gray-800 gap-4">
-        <img
-          src={image?.[0].url}
-          height={100}
-          width={100}
-          className="hidden lg:block"
-        />
+    <div className="h-auto flex items-center justify-center my-2 w-full">
+      <div className={componentClass}>
         <img
           src={image?.[0].url}
           height={200}
           width={200}
+          className={props.animateImage
+            ? "hidden lg:block transition hover:scale-110"
+            : "hidden lg:block"}
+        />
+        <img
+          src={image?.[0].url}
+          height={100}
+          width={100}
           className="block lg:hidden"
         />
 
-        <div className="flex flex-col items-start text-white">
-          <h2>{name}</h2>
-          <p>{description}</p>
+        <div className="h-full flex flex-col items-start justify-between text-white">
+          <div>
+            <h2 className="overflow-ellipsis truncate font-bold max-w-[100px] lg:max-w-[200px]">
+              {name}
+            </h2>
+            <p className="max-w-[100px] lg:max-w-[200px] line-clamp-2 lgline-clamp-4 overflow-ellipsis">
+              {description}
+            </p>
+          </div>
+
+          <div className="flex flex-col items-start justify-start gap-2 mt-4">
+            <span className="text-white underline-offset-2 text-sm">
+              Do you like this product? Leave a vote for it!
+            </span>
+            <ProductVote productId={Number(props.product.product.productID)} />
+          </div>
         </div>
 
         <div class="flex flex-col items-start justify-between text-white">

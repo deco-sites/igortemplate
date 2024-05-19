@@ -26,5 +26,6 @@ export default async function createCampVote(
   });
 
   const data = (await response.json()) as Result;
+
   return data;
 }

@@ -15,16 +15,30 @@ import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import { Buttons, Logo } from "../../components/header/Header.tsx";
 
+import { TotalVotes } from "deco-sites/igortemplate/sections/Header/TotalVotes.tsx";
+import { Result } from "deco-sites/igortemplate/loaders/campVote/getTotals.ts";
+
+interface Props {
+  items: SiteNavigationElement[];
+  device: "mobile" | "desktop" | "tablet";
+  searchbar?: SearchbarProps;
+  logo?: Logo;
+  buttons?: Buttons;
+  logoPosition?: "left" | "center";
+  totalVotes?: Result;
+}
+
 // Make it sure to render it on the server only. DO NOT render it on an island
 function Navbar(
-  { items, searchbar, logo, buttons, logoPosition = "left", device }: {
-    items: SiteNavigationElement[];
-    searchbar?: SearchbarProps;
-    logo?: Logo;
-    buttons?: Buttons;
-    logoPosition?: "left" | "center";
-    device: "mobile" | "desktop" | "tablet";
-  },
+  {
+    items,
+    searchbar,
+    logo,
+    buttons,
+    logoPosition = "left",
+    device,
+    totalVotes,
+  }: Props,
 ) {
   const platform = usePlatform();
 
@@ -61,6 +75,7 @@ function Navbar(
           {platform === "shopify" && <CartButtonShopify />}
           {platform === "nuvemshop" && <CartButtonNuvemshop />}
         </div>
+        <TotalVotes data={totalVotes} />
       </div>
     );
   }
@@ -141,6 +156,7 @@ function Navbar(
           </div>
         )}
       </div>
+      <TotalVotes data={totalVotes} />
     </div>
   );
 }
