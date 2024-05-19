@@ -1,4 +1,4 @@
-import {Result} from 'deco-sites/igortemplate/loaders/campVote/getTotals.ts';
+import { Result } from "deco-sites/igortemplate/loaders/campVote/getTotals.ts";
 import Spinner from "deco-sites/igortemplate/components/ui/Spinner.tsx";
 // import {invoke} from 'deco-sites/igortemplate/runtime.ts';
 
@@ -11,16 +11,14 @@ export function ErrorFallback({ error }: { error?: Error }) {
 }
 
 export function LoadingFallback() {
-    return (
-        <Spinner size={24}/>
-    )
+  return <Spinner size={24} />;
 }
 
-export const loader =  (props: Props) => {
+export const loader = (props: Props) => {
   if (!props.data) {
     return {
-        total: 0
-    }
+      total: 0,
+    };
   }
 
   return {
@@ -29,7 +27,7 @@ export const loader =  (props: Props) => {
 };
 
 export function TotalVotes(props: Props) {
-  const {data} = props;
+  const { data } = props;
   const total = data?.total;
 
   return (

@@ -9,7 +9,7 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 
-import {Result} from 'deco-sites/igortemplate/loaders/campVote/getTotals.ts';
+import { Result } from "deco-sites/igortemplate/loaders/campVote/getTotals.ts";
 
 export interface Logo {
   src: ImageWidget;
@@ -80,7 +80,7 @@ function Header({
   logoPosition = "center",
   buttons,
   device,
-  totalVotes
+  totalVotes,
 }: SectionProps<typeof loader>) {
   const platform = usePlatform();
   const items = navItems ?? [];
