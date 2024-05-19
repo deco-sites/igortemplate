@@ -5,7 +5,8 @@
 import * as $$$$$$$$$0 from "./actions/createCampVote.ts";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
-import * as $$$$$$$$0 from "./flags/multivariate/Messages.ts";
+import * as $$$$$$$$0 from "./flags/multivariate/HorizontalProductCard.tsx";
+import * as $$$$$$$$1 from "./flags/multivariate/Messages.ts";
 import * as $$$2 from "./loaders/availableIcons.ts";
 import * as $$$3 from "./loaders/campVote/getTotals.ts";
 import * as $$$4 from "./loaders/campVote/getVotes.ts";
@@ -145,7 +146,9 @@ const manifest = {
     "deco-sites/igortemplate/matchers/utm.ts": $$$$$$$1,
   },
   "flags": {
-    "deco-sites/igortemplate/flags/multivariate/Messages.ts": $$$$$$$$0,
+    "deco-sites/igortemplate/flags/multivariate/HorizontalProductCard.tsx":
+      $$$$$$$$0,
+    "deco-sites/igortemplate/flags/multivariate/Messages.ts": $$$$$$$$1,
   },
   "actions": {
     "deco-sites/igortemplate/actions/createCampVote.ts": $$$$$$$$$0,
