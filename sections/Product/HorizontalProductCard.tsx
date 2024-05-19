@@ -1,6 +1,7 @@
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Spinner from "deco-sites/igortemplate/components/ui/Spinner.tsx";
+import ProductVote from "deco-sites/igortemplate/islands/Votes/ProductVote.tsx";
 
 export interface Props {
   error: {
@@ -80,7 +81,7 @@ export default function HorizontalProductCard(props: Props) {
 
   const priceIsDiferent = offers?.lowPrice !== offers?.highPrice;
   const componentClass =
-    "flex flex-row items-start justify-center border-black rounded border px-2 py-2 bg-gray-800 gap-4 w-full " +
+    "h-full flex flex-row items-start justify-center border-black rounded border px-2 py-2 bg-gray-800 gap-4 w-full " +
     props?.maxWidth;
 
   return (
@@ -101,13 +102,20 @@ export default function HorizontalProductCard(props: Props) {
           className="block lg:hidden"
         />
 
-        <div className="flex flex-col items-start justify-center text-white">
-          <h2 className="overflow-ellipsis truncate font-bold max-w-[100px] lg:max-w-[200px]">
-            {name}
-          </h2>
-          <p className="max-w-[100px] lg:max-w-[200px] line-clamp-2 lgline-clamp-4 overflow-ellipsis">
-            {description}
-          </p>
+        <div className="h-full flex flex-col items-start justify-between text-white">
+          <div>
+              <h2 className="overflow-ellipsis truncate font-bold max-w-[100px] lg:max-w-[200px]">
+                {name}
+              </h2>
+              <p className="max-w-[100px] lg:max-w-[200px] line-clamp-2 lgline-clamp-4 overflow-ellipsis">
+                {description}
+              </p>
+          </div>
+
+          <div className="flex flex-col items-start justify-start gap-2 mt-4">
+              <span className="text-white underline-offset-2 text-sm">Do you like this product? Leave a vote for it!</span>
+              <ProductVote productId={Number(props.product.product.productID)} />
+          </div>
         </div>
 
         <div class="flex flex-col items-start justify-between text-white">
@@ -122,6 +130,7 @@ export default function HorizontalProductCard(props: Props) {
           >
             Details
           </a>
+
         </div>
       </div>
     </div>
